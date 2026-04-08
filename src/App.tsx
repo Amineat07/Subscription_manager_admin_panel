@@ -17,7 +17,7 @@ import TicketDetail from "./components/pages/TicketDetail";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/admin">
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route element={<AdminLayout />}>

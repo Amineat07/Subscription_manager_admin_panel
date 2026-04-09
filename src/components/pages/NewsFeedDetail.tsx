@@ -28,7 +28,7 @@ export default function NewsFeedDetail() {
   async function fetchDetail() {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/newsfeed/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/newsfeed/${id}`,
         { withCredentials: true }
       );
       setData(res.data);

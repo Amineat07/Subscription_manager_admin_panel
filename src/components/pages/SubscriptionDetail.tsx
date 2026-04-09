@@ -18,7 +18,7 @@ export default function SubscriptionDetail() {
     if (!id) return;
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/subscription/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/subscription/${id}`,
         { withCredentials: true }
       );
       setSub(res.data);

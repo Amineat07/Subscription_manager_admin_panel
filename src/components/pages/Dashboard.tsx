@@ -25,7 +25,7 @@ export default function Dashboard() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/dashboard/stats`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/dashboard/stats`,
         { withCredentials: true }
       );
       setStats(res.data);

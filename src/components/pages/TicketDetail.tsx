@@ -34,7 +34,7 @@ export default function TicketDetail() {
   async function fetchTicket() {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/ticket/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/ticket/${id}`,
         { withCredentials: true }
       );
       setTicket(res.data);
@@ -46,7 +46,7 @@ export default function TicketDetail() {
   async function sendReply() {
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/tickets/${id}/reply`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${id}/reply`,
         { message: reply },
         { withCredentials: true }
       );

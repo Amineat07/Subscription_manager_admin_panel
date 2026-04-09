@@ -18,7 +18,7 @@ export default function CreateNewsFeed() {
 
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/newsfeed`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/newsfeed`,
         {
           title,
           content,

@@ -16,7 +16,7 @@ export default function Users() {
 
   async function fetchUsers() {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/admin/api/v1/users`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/admin/users`, {
         withCredentials: true,
       });
 
@@ -42,7 +42,7 @@ export default function Users() {
     if (!result.isConfirmed) return;
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/admin/api/v1/users/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/admin/users/${id}`, {
         withCredentials: true,
       });
 

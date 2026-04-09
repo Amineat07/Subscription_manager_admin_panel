@@ -22,7 +22,7 @@ export default function Subscriptions() {
       setLoading(true);
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/admin/api/v1/subscriptions`,
+          `${import.meta.env.VITE_API_URL}/api/v1/admin/subscriptions`,
           { withCredentials: true }
         );
         setSubs(res.data);

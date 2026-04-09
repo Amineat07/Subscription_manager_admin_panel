@@ -24,7 +24,7 @@ export default function NewsFeedPage() {
   async function fetchNews() {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/newsfeed`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/newsfeed`,
         { withCredentials: true }
       );
       setItems(res.data);
@@ -43,7 +43,7 @@ export default function NewsFeedPage() {
     setLoading(true);
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/newsfeed`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/newsfeed`,
         {
           title,
           content,
@@ -70,7 +70,7 @@ export default function NewsFeedPage() {
   async function handleDelete(id: number) {
     const confirm = await toast.danger("Delete news?", "");
     if (!confirm.isConfirmed) return;
-    await axios.delete(`${import.meta.env.VITE_API_URL}/admin/api/v1/newsfeed/${id}`, {
+    await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/admin/newsfeed/${id}`, {
       withCredentials: true,
     });
     setItems((prev) => prev.filter((n) => n.id !== id));

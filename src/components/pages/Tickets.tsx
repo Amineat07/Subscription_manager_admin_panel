@@ -35,7 +35,7 @@ export default function Tickets() {
     setLoading(true);
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/tickets`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/tickets`,
         { withCredentials: true }
       );
       setItems(res.data);
@@ -50,7 +50,7 @@ export default function Tickets() {
     setUpdatingId(id);
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/tickets/${id}/status`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/tickets/${id}/status`,
         { status },
         { withCredentials: true }
       );

@@ -19,7 +19,7 @@ export default function UserDetail() {
   async function fetchUser() {
     try {
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/admin/api/v1/users/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/users/${id}`,
         { withCredentials: true }
       );
 

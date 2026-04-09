@@ -12,9 +12,6 @@ import NewsFeedDetail from "./components/pages/NewsFeedDetail";
 import Tickets from "./components/pages/Tickets";
 import TicketDetail from "./components/pages/TicketDetail";
 
-
-
-
 export default function App() {
   return (
     <BrowserRouter basename="/admin">

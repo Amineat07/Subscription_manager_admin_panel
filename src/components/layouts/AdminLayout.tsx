@@ -3,8 +3,8 @@ import { NavLink, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { icons } from "../../assets/icons";
 import { SidebarContent } from "./SideBare";
 import { adminNavItems } from "./MenuItem";
-import axios from "axios";
 import { toast } from "../../utils/Toast";
+import { authAPI, handleApiError } from "../../services/adminApi";
 
 interface LayoutProps {
   title?: string;
@@ -37,11 +37,9 @@ export default function Layout({
     if (!result.isConfirmed) return;
 
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/v1/logout`,
-        {},
-        { withCredentials: true },
-      );
+      await authAPI.logout();
+    } catch (error) {
+      console.error(handleApiError(error));
     } finally {
       localStorage.removeItem("access_token");
       localStorage.removeItem("role");

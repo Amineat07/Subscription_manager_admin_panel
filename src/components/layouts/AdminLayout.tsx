@@ -64,22 +64,7 @@ export default function Layout({
       <div className="flex-1 flex flex-col min-w-0 min-h-screen">
         <header className="bg-white border-b border-[#EBEBEB] sticky top-0 z-20 shrink-0">
           <div className="flex items-center gap-3 px-5 h-[56px]">
-            <h1 className="text-[16px] font-medium text-[#1A1A1A] truncate">
-              {pageTitle}
-            </h1>
 
-            <div className="hidden sm:flex flex-1 max-w-[280px] ml-4">
-              <div className="relative w-full">
-                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[#BBBBBB]">
-                  {icons.search}
-                </span>
-                <input
-                  type="text"
-                  placeholder="Search…"
-                  className="w-full bg-[#F4F4F4] border border-[#EBEBEB] rounded-[8px] pl-9 pr-3 py-[7px] text-[13px] outline-none"
-                />
-              </div>
-            </div>
 
             <div className="flex-1" />
 

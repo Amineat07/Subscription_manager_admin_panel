@@ -15,11 +15,33 @@ export default function NewsFeedPage() {
   const [fetching, setFetching] = useState(true);
   const navigate = useNavigate();
 
+
   useEffect(() => {
     fetchNews();
-    const interval = setInterval(fetchNews, 10000);
-    return () => clearInterval(interval);
-  }, []);
+
+    const es = new EventSource(
+        `${import.meta.env.VITE_API_URL}/api/v1/admin/sse/newsfeed`,
+        { withCredentials: true }
+    );
+
+    es.addEventListener("created", (e) => {
+        const newItem: NewsFeed = JSON.parse(e.data)
+        setItems(prev => [newItem, ...prev])
+    })
+
+    es.addEventListener("published", (e) => {
+        const updatedItem: NewsFeed = JSON.parse(e.data)
+        setItems(prev =>
+            prev.map(item =>
+                item.id === updatedItem.id ? updatedItem : item
+            )
+        )
+    })
+
+    es.onerror = () => es.close()
+
+    return () => es.close()
+}, [])
 
   async function fetchNews() {
     try {
@@ -59,7 +81,6 @@ export default function NewsFeedPage() {
       setContent("");
       setImageUrl("");
       setScheduledAt("");
-      fetchNews();
     } catch {
       toast.error("Create failed");
     } finally {
@@ -211,9 +232,6 @@ export default function NewsFeedPage() {
           <div className="px-4 py-3 border-t border-[#F0F0F0] flex justify-between items-center bg-[#FAFAFA]">
             <p className="text-[10px] text-[#888]">
               <span className="font-medium text-[#1A1A1A]">{items.length}</span> post{items.length !== 1 ? "s" : ""} total
-            </p>
-            <p className="text-[10px] text-[#888]">
-              Auto-refreshes every <span className="font-medium text-[#1A1A1A]">10s</span>
             </p>
           </div>
         )}

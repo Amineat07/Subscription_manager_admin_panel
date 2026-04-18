@@ -21,15 +21,15 @@ function Login() {
         { withCredentials: true }
       );
 
-      const { access_token, role } = response.data;
+      const { token, user } = response.data;
 
-      if (role !== "admin") {
+      if (user.role !== "admin") {
         await toast.error("Access denied", "This panel is for admins only.");
         return;
       }
 
-      localStorage.setItem("access_token", access_token);
-      localStorage.setItem("role", role);
+      localStorage.setItem("access_token", token);
+      localStorage.setItem("role", user.role);
 
       navigate("/dashboard");
     } catch (error: unknown) {
